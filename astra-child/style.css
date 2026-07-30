@@ -1,0 +1,792 @@
+/*
+Theme Name: Provence Live Prod
+Description: Thème enfant Astra pour Provence Live Prod.
+Author: Provence Live Prod
+Template: astra
+Version: 1.0.0
+Text Domain: plp-astra-child
+*/
+
+/*
+ * Classes à ajouter dans les réglages avancés des blocs Spectra :
+ * plp-hero, plp-services, plp-trust, plp-strengths, plp-about-stats,
+ * plp-contact. Elles évitent de dépendre des identifiants temporaires des blocs.
+ */
+
+:root {
+	--plp-bg: #fdfbf7;
+	--plp-text: #a6a6a6;
+	--plp-surface: #f4f2f9;
+	--plp-surface-soft: #ffffff;
+	--plp-accent: #9a9bc1;
+	--plp-accent-dark: #6b6ca4;
+	--plp-white: #ffffff;
+	--plp-border: rgba(33, 22, 59, 0.14);
+	--plp-shadow: 0 16px 42px rgba(33, 22, 59, 0.1);
+}
+
+body {
+	background: var(--plp-bg);
+	color: var(--plp-text);
+}
+
+body .site,
+body .site-content,
+body .entry-content {
+	background: var(--plp-bg);
+}
+
+body :is(h1, h2, h3, h4, h5, h6),
+body .entry-content :is(h1, h2, h3, h4, h5, h6) {
+	color: inherit;
+	letter-spacing: -0.025em;
+}
+
+body .ast-container {
+	max-width: 1200px;
+}
+
+/* Boutons et appels à l'action. */
+body :is(.ast-button, .button, .wp-block-button__link, .uagb-buttons-repeater) {
+	border: 1px solid transparent;
+	border-radius: 999px;
+	box-shadow: none;
+	font-weight: 800;
+	padding: 0.9em 1.5em;
+	transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+body :is(.ast-button, .button, .wp-block-button__link, .uagb-buttons-repeater):hover,
+body :is(.ast-button, .button, .wp-block-button__link, .uagb-buttons-repeater):focus-visible {
+	background: var(--plp-accent-dark);
+	border-color: var(--plp-accent-dark);
+	color: var(--plp-white);
+	transform: translateY(-2px);
+}
+
+/* En-tête lisible, avec une séparation nette du contenu. */
+.site-header,
+.ast-primary-header-bar,
+.ast-theme-transparent-header .main-header-bar {
+	border-bottom: 0;
+}
+
+.ast-theme-transparent-header .main-header-bar {
+	background: rgba(255, 255, 255, 0.88);
+	backdrop-filter: blur(14px);
+	box-shadow: 0 1px 0 rgba(33, 22, 59, 0.08);
+}
+
+.main-header-menu .menu-link,
+.ast-builder-menu-1 .menu-item > .menu-link {
+	color: #a6a6a6;
+	font-weight: 700;
+}
+
+/* Sections : rythme vertical et cartes plus aérées. */
+.entry-content > .wp-block-group,
+.entry-content > .wp-block-uagb-container.uagb-is-root-container {
+	padding-block: clamp(3.5rem, 8vw, 7rem);
+}
+
+/* Points forts et Contact gardent une bande de fond discrète. */
+.plp-strengths,
+.plp-contact {
+	background: var(--plp-surface);
+	border-block: 1px solid var(--plp-border);
+}
+
+/* Services et Confiance : plus de bloc, juste une ligne colorée pour séparer les parties. */
+.plp-services {
+	border-top: 4px solid var(--plp-accent-dark);
+}
+
+.plp-trust {
+	border-top: 4px solid #3f8f7c;
+}
+
+.plp-services .uagb-container-inner-blocks-wrap,
+.plp-trust .uagb-container-inner-blocks-wrap,
+.plp-trust .uagb-testimonial__wrap,
+.plp-strengths .uagb-container-inner-blocks-wrap {
+	gap: clamp(2rem, 4vw, 3.5rem) !important;
+}
+
+.plp-strengths [class*="uagb-block"] {
+	border-radius: 1.25rem;
+}
+
+/* Services et Confiance : contenu à plat, sans encadré. */
+.plp-services .uagb-ifb-content,
+.plp-trust .uagb-tm__content {
+	background: none;
+	border: none !important;
+	border-radius: 0;
+	height: 100%;
+	padding: clamp(0.5rem, 1.5vw, 1rem) 0;
+}
+
+/* Points forts : garde l'aspect carte grisâtre. */
+.plp-strengths .uagb-container-inner-blocks-wrap > * {
+	background: var(--plp-surface-soft);
+	border: 1px solid var(--plp-border) !important;
+	border-radius: 1.25rem;
+	height: 100%;
+	padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+/* Points forts : deux éléments par ligne sur ordinateur. */
+.plp-strengths .uagb-container-inner-blocks-wrap {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.plp-strengths img,
+.plp-strengths svg {
+	filter: saturate(0) brightness(0);
+	opacity: 0.82;
+}
+
+/* Page À propos : cartes pour les chiffres-clés. */
+.plp-about-stats {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.25rem;
+	margin-block: 2.5rem;
+}
+
+.plp-about-stats > * {
+	background: var(--plp-surface-soft);
+	border: 1px solid var(--plp-border);
+	border-radius: 1.25rem;
+	padding: 1.5rem;
+	text-align: center;
+}
+
+/* Formulaire de demande de catalogue. */
+.plp-catalogue-form {
+	background: var(--plp-surface);
+	border: 1px solid var(--plp-border);
+	border-radius: 1.5rem;
+	box-shadow: var(--plp-shadow);
+	margin: 2rem auto;
+	max-width: 760px;
+	padding: clamp(1.5rem, 5vw, 3rem);
+}
+
+.plp-eyebrow {
+	color: var(--plp-accent);
+	font-size: 0.8rem;
+	font-weight: 800;
+	letter-spacing: 0.12em;
+	margin-bottom: 0.4rem;
+	text-transform: uppercase;
+}
+
+.plp-form {
+	display: grid;
+	gap: 1.1rem;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	margin-top: 2rem;
+}
+
+.plp-form p {
+	margin: 0;
+}
+
+.plp-form__full-width {
+	grid-column: 1 / -1;
+}
+
+.plp-form label {
+	color: var(--plp-text);
+	font-weight: 700;
+}
+
+.plp-form input:not([type="checkbox"]) {
+	background: var(--plp-white);
+	border: 2px solid var(--plp-border);
+	border-radius: 0.65rem;
+	color: var(--plp-text);
+	margin-top: 0.4rem;
+	min-height: 48px;
+	padding: 0.7rem 0.9rem;
+}
+
+.plp-form input:focus-visible {
+	border-color: var(--plp-accent);
+	outline: 3px solid rgba(154, 155, 193, 0.35);
+}
+
+.plp-form-notice {
+	border-radius: 0.75rem;
+	margin: 1.5rem 0 0;
+	padding: 1rem;
+}
+
+.plp-form-notice--success {
+	background: #d9f8e4;
+	color: #0e4d28;
+}
+
+.plp-form-notice--error {
+	background: #ffe1e1;
+	color: #7a1212;
+}
+
+/* Bannière noire avec photo de concert située juste avant le footer. */
+.uagb-block-f8b35cf0 {
+	display: none !important;
+}
+
+/* Page Accueil test : masque le titre de page "Accueil test". */
+body.plp-hide-page-title .entry-header .entry-title,
+body.plp-hide-page-title .entry-title {
+	display: none;
+}
+
+/* Page Accueil test : force le centrage du titre "Au service du spectacle vivant". */
+body.plp-hide-page-title .entry-content h1.has-text-align-center {
+	text-align: center !important;
+	width: 100%;
+}
+
+/* Page Artistes et Specatcles : titre central et dÃ©filement continu des visuels. */
+body.plp-artistes-spectacles-page .entry-header {
+	padding: clamp(4rem, 10vw, 8rem) 1.5rem clamp(2rem, 5vw, 4rem);
+	text-align: center;
+}
+
+body.plp-artistes-spectacles-page .entry-title {
+	color: var(--plp-text);
+	font-size: clamp(4rem, 11vw, 9rem);
+	font-weight: 800;
+	line-height: 1;
+	margin: 0;
+}
+
+body.plp-artistes-spectacles-page .entry-content {
+	max-width: none;
+	padding-bottom: clamp(4rem, 9vw, 8rem);
+}
+
+.plp-artists-carousel {
+	margin-left: calc(50% - 50vw);
+	overflow: hidden;
+	padding-block: clamp(1.5rem, 4vw, 3rem);
+	width: 100vw;
+}
+
+.plp-artists-carousel__viewport {
+	overflow: hidden;
+	width: 100%;
+}
+
+.plp-artists-carousel__track {
+	animation: plp-artists-scroll 42s linear infinite;
+	display: flex;
+	width: max-content;
+	will-change: transform;
+}
+
+.plp-artists-carousel__slide {
+	background: var(--plp-surface);
+	border-radius: 1rem;
+	box-shadow: var(--plp-shadow);
+	flex: 0 0 clamp(230px, 28vw, 390px);
+	margin: 0 clamp(1rem, 2vw, 2rem) 0 0;
+	overflow: hidden;
+	position: relative;
+}
+
+.plp-artists-carousel__slide img {
+	display: block;
+	height: clamp(180px, 24vw, 300px);
+	object-fit: cover;
+	transition: transform 250ms ease;
+	width: 100%;
+}
+
+.plp-artists-carousel__caption {
+	align-items: flex-end;
+	-webkit-backdrop-filter: blur(10px);
+	backdrop-filter: blur(10px);
+	background: rgba(15, 15, 18, 0.48);
+	bottom: 0;
+	color: #fff;
+	display: flex;
+	font-size: 1.25rem;
+	font-weight: 700;
+	justify-content: center;
+	left: 0;
+	opacity: 0;
+	padding: 1rem 1.25rem;
+	pointer-events: none;
+	position: absolute;
+	right: 0;
+	transform: translateY(100%);
+	transition: opacity 250ms ease, transform 250ms ease, visibility 250ms;
+	visibility: hidden;
+}
+
+.plp-artists-carousel__slide:hover img,
+.plp-artists-carousel__slide:focus-visible img {
+	transform: scale(1.04);
+}
+
+.plp-artists-carousel__slide:hover .plp-artists-carousel__caption,
+.plp-artists-carousel__slide:focus-visible .plp-artists-carousel__caption {
+	opacity: 1;
+	transform: translateY(0);
+	visibility: visible;
+}
+
+.plp-artists-carousel__slide:focus-visible {
+	outline: 3px solid #fff;
+	outline-offset: -5px;
+}
+
+.plp-artists-carousel:hover .plp-artists-carousel__track,
+.plp-artists-carousel:focus-within .plp-artists-carousel__track {
+	animation-play-state: paused;
+}
+
+@keyframes plp-artists-scroll {
+	to {
+		transform: translateX(-50%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.plp-artists-carousel__track {
+		animation: none;
+		width: auto;
+	}
+}
+
+/* Grille "Nos services" : 3 items puis 2 centrés en dessous. */
+.entry-content .wp-block-group:has(.plp-services-grid) > h2 {
+	font-size: clamp(2rem, 4vw, 3.25rem);
+}
+
+.plp-services-grid {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2.5rem;
+	justify-content: center;
+	margin: 2.5rem auto 0;
+	max-width: 1100px;
+	padding: 0 1.5rem clamp(2.5rem, 5vw, 4rem);
+}
+
+.plp-service-item {
+	flex: 0 1 260px;
+	text-align: center;
+}
+
+.plp-service-icon {
+	display: block;
+	margin: 0 auto 0.85rem;
+}
+
+.plp-service-title {
+	font-size: 1.05rem;
+	font-weight: 800;
+	margin: 0 0 0.5rem;
+}
+
+.plp-service-text {
+	color: var(--plp-text);
+	font-size: 0.9rem;
+	line-height: 1.5;
+	margin: 0;
+	opacity: 0.75;
+}
+
+/* Page Accueil test : bande claire pleine largeur des points forts. */
+.plp-home-strengths {
+	background: #d9d1ea;
+	border-block: 1px solid #c8bedc;
+	color: #a6a6a6;
+	margin-top: 0;
+	padding: clamp(3rem, 7vw, 5.5rem) max(1.5rem, calc((100% - 1120px) / 2));
+}
+
+.plp-home-strengths h2 {
+	color: #a6a6a6;
+	font-size: clamp(2rem, 4vw, 3.25rem);
+	margin: 0 0 clamp(2rem, 5vw, 3.5rem);
+}
+
+.plp-home-strengths__grid {
+	display: grid;
+	gap: clamp(1.5rem, 4vw, 3.5rem);
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	margin: 0 auto;
+	max-width: 1120px;
+}
+
+.plp-home-strengths__item {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	text-align: center;
+}
+
+.plp-home-strengths__item svg {
+	background: var(--plp-accent-dark);
+	border-radius: 50%;
+	box-shadow: 0 7px 16px rgba(107, 108, 164, 0.28);
+	box-sizing: content-box;
+	fill: none;
+	height: 3rem;
+	padding: 0.6rem;
+	stroke: var(--plp-white);
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1.7;
+	width: 3rem;
+}
+
+.plp-home-strengths__item h3 {
+	color: #a6a6a6;
+	font-size: 1.65rem;
+	font-weight: 800;
+	margin: 0;
+}
+
+/* Page Accueil test : bandes de présentation qui suivent les points forts. */
+body .entry-content .plp-home-band {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	min-height: clamp(180px, 24vw, 280px);
+	padding: clamp(3rem, 7vw, 5.5rem) 1.5rem;
+	width: 100%;
+}
+
+body .entry-content .plp-home-band h2 {
+	color: var(--plp-text);
+	font-size: clamp(2rem, 4vw, 3.25rem);
+	margin: 0;
+}
+
+body .entry-content .plp-home-trust {
+	background-color: #e7e7e7 !important;
+}
+
+body .entry-content .plp-home-stats {
+	background-color: #d9d1ea !important;
+	flex-direction: column;
+}
+
+.plp-home-stats__grid {
+	display: grid;
+	gap: clamp(2rem, 4vw, 4rem);
+	grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+	margin: clamp(2rem, 5vw, 3.5rem) auto 0;
+	max-width: 1280px;
+	width: 100%;
+}
+
+.plp-home-stats__item {
+	border: 0 !important;
+	padding: 0 !important;
+	text-align: center;
+}
+
+.plp-home-stats__item strong {
+	display: block;
+	font-size: clamp(1.15rem, 2.2vw, 1.65rem);
+	line-height: 1.25;
+	overflow-wrap: normal !important;
+	white-space: nowrap !important;
+	word-break: normal !important;
+}
+
+.plp-home-stats__item p {
+	color: #a6a6a6;
+	margin: 0.65rem 0 0;
+}
+
+@media (max-width: 800px) {
+	.plp-service-item {
+		flex-basis: 100%;
+	}
+
+	.plp-home-strengths__grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.plp-home-stats__grid {
+		grid-template-columns: 1fr !important;
+	}
+
+}
+
+/* Page Demande de catalogue : contraste clair, sobre et lisible. */
+body.plp-catalogue-page,
+body.plp-catalogue-page .site,
+body.plp-catalogue-page .site-content,
+body.plp-catalogue-page .entry-content {
+	background: #fdfbf7;
+	color: #a6a6a6;
+}
+
+body.plp-catalogue-page .entry-header {
+	padding-top: clamp(3rem, 7vw, 5.5rem);
+	text-align: center;
+}
+
+body.plp-catalogue-page .entry-title,
+body.plp-catalogue-page .entry-content :is(h1, h2, h3) {
+	color: #a6a6a6;
+}
+
+body.plp-catalogue-page .plp-catalogue-form {
+	background: #f4f1f9;
+	border-color: #d8d0e7;
+	box-shadow: 0 16px 40px rgba(33, 22, 59, 0.12);
+	color: #a6a6a6;
+	margin-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+body.plp-catalogue-page .plp-eyebrow {
+	color: #6b6ca4;
+}
+
+body.plp-catalogue-page .plp-form label {
+	color: #a6a6a6;
+}
+
+body.plp-catalogue-page .plp-form input:not([type="checkbox"]) {
+	border-color: #d8d0e7;
+}
+
+body.plp-catalogue-page .plp-form .button {
+	background: #6b4a9a;
+	border-color: #6b4a9a;
+	color: #ffffff;
+}
+
+body.plp-catalogue-page .plp-form .button:hover,
+body.plp-catalogue-page .plp-form .button:focus-visible {
+	background: #513677;
+	border-color: #513677;
+}
+
+/* Pied de page PLP : fond distinct et liens bien visibles. */
+.plp-footer {
+	background: #21163b;
+	border-top: 1px solid rgba(255, 255, 255, 0.22);
+	color: var(--plp-white);
+	font-size: 0.875rem;
+	line-height: 1.45;
+	margin-top: 0;
+}
+
+.plp-footer__inner {
+	align-items: start;
+	color: #a6a6a6;
+	display: grid !important;
+	gap: 2.5rem;
+	grid-template-columns: minmax(220px, 280px) repeat(3, minmax(0, 1fr));
+	padding-block: clamp(2.5rem, 5vw, 4rem);
+}
+
+.plp-footer .plp-footer__brand {
+	display: contents !important;
+}
+
+.plp-footer__brand-text {
+	display: flex;
+	flex-direction: column;
+	gap: 0.55rem;
+	grid-column: 2 / -1;
+	grid-row: 1;
+	min-width: 0;
+	text-align: left;
+}
+
+.plp-footer__logo {
+	display: block;
+	grid-column: 1;
+	grid-row: 1 / 3;
+	height: auto;
+	margin: 0;
+	max-width: 280px;
+}
+
+.plp-footer__brand-title {
+	color: #a6a6a6;
+	font-family: "Cinzel", Georgia, serif;
+	font-size: clamp(1.4rem, 2.4vw, 2rem);
+	font-weight: 800;
+	line-height: 1.1;
+	margin: 0;
+}
+
+.plp-footer__tagline {
+	color: #a6a6a6;
+	font-size: 0.95rem;
+	margin: 0;
+	max-width: 360px;
+}
+
+.plp-footer__column {
+	align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+}
+
+.plp-footer__title {
+	color: #a6a6a6;
+	font-size: 0.85rem;
+	letter-spacing: 0.08em;
+	margin: 0 0 0.85rem;
+	text-align: left;
+	text-transform: uppercase;
+}
+
+.plp-footer__links {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+.plp-footer__links li + li {
+	margin-top: 0.5rem;
+}
+
+.plp-footer__link-with-icon {
+	align-items: center;
+	display: inline-flex;
+	gap: 0.55rem;
+	justify-content: flex-start;
+}
+
+.plp-footer__social-title {
+	color: #a6a6a6;
+	font-size: 0.95rem;
+	font-weight: 700;
+	margin: 0 0 0.75rem;
+	text-align: left;
+}
+
+.plp-footer__social-link {
+	align-items: center;
+	background: rgba(255, 255, 255, 0.12);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	border-radius: 999px;
+	display: inline-flex;
+	justify-content: center;
+	padding: 0.8rem;
+	transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.plp-footer__social-link:hover,
+.plp-footer__social-link:focus-visible {
+	background: rgba(255, 255, 255, 0.22);
+	transform: translateY(-2px);
+}
+
+.plp-footer__icon {
+	color: #ffffff;
+	flex: 0 0 auto;
+	height: 1em;
+	width: 1em;
+}
+
+.plp-footer__icon--facebook {
+	height: 1.25rem;
+	width: 1.25rem;
+}
+
+.plp-footer address {
+	font-style: normal;
+}
+
+.plp-footer :is(a, p, span) {
+	color: inherit;
+}
+
+.plp-footer a:hover,
+.plp-footer a:focus-visible {
+	color: var(--plp-accent);
+}
+
+.plp-footer__bottom {
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	color: rgba(255, 255, 255, 0.62);
+	font-size: 0.875rem;
+}
+
+.plp-footer__bottom .ast-container {
+	align-items: center;
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+	padding-block: 1.2rem;
+}
+
+.plp-footer__bottom p {
+	margin: 0;
+}
+
+@media (max-width: 921px) {
+	.plp-strengths .uagb-container-inner-blocks-wrap,
+	.plp-about-stats {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.plp-footer__inner {
+		display: flex !important;
+		flex-wrap: wrap;
+	}
+
+	.plp-footer .plp-footer__brand {
+		align-items: flex-start;
+		display: flex !important;
+		flex: 1 1 100%;
+		flex-flow: row nowrap;
+		gap: 1.25rem;
+	}
+
+	.plp-footer__brand-text,
+	.plp-footer__logo {
+		grid-column: auto;
+		grid-row: auto;
+	}
+
+	.plp-footer__column {
+		flex: 1 1 140px;
+	}
+}
+
+@media (max-width: 544px) {
+	body :is(h1, .entry-content h1) {
+		font-size: clamp(2.3rem, 12vw, 3.4rem);
+	}
+
+	.plp-form,
+	.plp-strengths .uagb-container-inner-blocks-wrap,
+	.plp-about-stats {
+		grid-template-columns: 1fr;
+	}
+
+	.plp-footer__inner {
+		grid-template-columns: 1fr;
+	}
+
+	.plp-footer__brand {
+		grid-column: auto;
+	}
+
+	.plp-footer__bottom .ast-container {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+}
