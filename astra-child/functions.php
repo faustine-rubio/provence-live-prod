@@ -460,6 +460,9 @@ function plp_catalogue_page_body_class( $classes ) {
 
 	if ( is_page( 'accueil-test' ) ) {
 		$classes[] = 'plp-hide-page-title';
+		$classes[] = 'plp-home-page';
+	} elseif ( is_front_page() ) {
+		$classes[] = 'plp-home-page';
 	}
 
 	if ( is_page( 'artistes-et-specatcles' ) ) {

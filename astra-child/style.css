@@ -365,8 +365,40 @@ body.plp-artistes-spectacles-page .entry-content {
 }
 
 /* Grille "Nos services" : 3 items puis 2 centrés en dessous. */
+.plp-home-page .entry-content > .wp-block-video {
+	margin-inline: auto;
+	max-width: 800px;
+	width: min(80%, 800px);
+}
+
+.plp-home-page .entry-content > .wp-block-video video {
+	display: block;
+	height: auto;
+	width: 100%;
+}
+
+body.plp-home-page .entry-content h2 {
+	color: #4d4d4d;
+}
+
+body.plp-home-page .entry-content .wp-block-group:has(.plp-services-grid),
+body.plp-home-page .entry-content .wp-block-group:has(.plp-services-grid) :is(h2, h3, p),
+body.plp-home-page .entry-content .plp-home-strengths,
+body.plp-home-page .entry-content .plp-home-strengths :is(h2, h3),
+body.plp-home-page .entry-content .plp-home-trust,
+body.plp-home-page .entry-content .plp-home-trust h2,
+body.plp-home-page .entry-content .plp-home-stats,
+body.plp-home-page .entry-content .plp-home-stats :is(h2, strong, p) {
+	color: #4d4d4d;
+}
+
+.plp-home-page .entry-content .wp-block-group:has(.plp-services-grid) {
+	padding-block: clamp(1.75rem, 4vw, 3rem);
+}
+
 .entry-content .wp-block-group:has(.plp-services-grid) > h2 {
 	font-size: clamp(2rem, 4vw, 3.25rem);
+	margin-block: 0;
 }
 
 .plp-services-grid {
@@ -374,9 +406,9 @@ body.plp-artistes-spectacles-page .entry-content {
 	flex-wrap: wrap;
 	gap: 2.5rem;
 	justify-content: center;
-	margin: 2.5rem auto 0;
+	margin: clamp(1.5rem, 3vw, 2rem) auto 0;
 	max-width: 1100px;
-	padding: 0 1.5rem clamp(2.5rem, 5vw, 4rem);
+	padding: 0 1.5rem;
 }
 
 .plp-service-item {
@@ -788,5 +820,25 @@ body.plp-catalogue-page .plp-form .button:focus-visible {
 	.plp-footer__bottom .ast-container {
 		align-items: flex-start;
 		flex-direction: column;
+	}
+}
+
+/* Impression / export PDF : identité du footer empilée sous le logo. */
+@media print {
+	.plp-footer .plp-footer__brand {
+		align-items: flex-start;
+		display: flex !important;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.plp-footer__brand-text,
+	.plp-footer__logo {
+		grid-column: auto;
+		grid-row: auto;
+	}
+
+	.plp-footer__brand-text {
+		width: 100%;
 	}
 }
